@@ -30,6 +30,7 @@ public class test1 {
         System.out.println(o2);
         System.out.println(o2.getName());
 
+
     }
 }
 
