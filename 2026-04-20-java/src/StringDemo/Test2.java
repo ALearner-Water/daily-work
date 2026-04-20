@@ -13,7 +13,7 @@ public class Test2 {
             System.out.println("请输入用户名");//创建用户名
             String name2=sc.next(); //创建了一个新内存地址，所以不能用==得用equals
 
-            System.out.println("请输入密码");//创建密码
+            System.out.println("请输入密码");//创建密码。
             String s2 = sc.next();  //创建了一个新内存地址，所以不能用==得用equals
 
             //使用s1调用equals方法  不会忽略大小写   equalsIgnorecase会忽略大小写

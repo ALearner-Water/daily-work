@@ -20,7 +20,7 @@ public class Test1 {
         String name2=new String();
         System.out.println("qqq"+name2+"ppp");  //会输出空字符""
 
-        //3.  public String(String name) 根据传入字符串，创造新字符串对象
+        //3.  public String(String name) 根据传入字符串，创造新字符串对象。
         String name3=new String(name1);
         System.out.println(name3);
 
