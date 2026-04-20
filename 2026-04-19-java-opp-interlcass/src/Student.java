@@ -1,6 +1,7 @@
-public class Student implements Swim {
+public class Student implements Swim{
     @Override
-    public void swim() {
+    public void swim(){
         System.out.println("学生在游泳");
     }
 }
+
