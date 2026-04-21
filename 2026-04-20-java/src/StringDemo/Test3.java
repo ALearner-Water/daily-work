@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Test3 {
     public static void main(String[] args) {
 
-        //1. public char chatAt(int index); 根据索引返回数组
+        //1. public char chatAt(int index); 根据索引返回数组。
         //2. public int length();
 
         //1. public char chatAt(int index); 根据索引返回数组
