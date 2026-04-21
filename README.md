@@ -8,7 +8,7 @@
 
 - 路径：`2026-04-18-snake-game/`
 - 语言：Java
-- 类型：Swing 桌面小游戏
+- 类型：Swing 桌面小游戏（贪吃蛇）
 - 入口文件：`2026-04-18-snake-game/src/SnakeGame.java`
 
 #### 运行方式
