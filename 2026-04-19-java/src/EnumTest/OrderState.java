@@ -9,7 +9,7 @@ public enum OrderState {
     DELIVERED("已送达"),
     CANCELED("已取消");;
 
-    private String name;    //只有六种状态
+    private String name;    //只有六种状态。
 
     //是默认的private，可省略不写
     private OrderState(String name){this.name =name;}   //必须是private，不能是其他，因为不需要外部修改变量
