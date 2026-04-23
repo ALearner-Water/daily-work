@@ -33,7 +33,7 @@ public class SnakeGame extends JPanel implements ActionListener {
 
     public SnakeGame() {
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
-        setBackground(Color.WHITE);
+        setBackground(new Color(30, 30, 30));
         setFocusable(true);
         addKeyListener(new GameKeyListener());
         startGame();
@@ -74,7 +74,7 @@ public class SnakeGame extends JPanel implements ActionListener {
     }
 
     private void drawGrid(Graphics g) {
-        g.setColor(new Color(225, 225, 225));
+        g.setColor(new Color(45, 45, 45));
         for (int x = 0; x <= PANEL_WIDTH; x += TILE_SIZE) {
             g.drawLine(x, 0, x, PANEL_HEIGHT);
         }
@@ -101,7 +101,7 @@ public class SnakeGame extends JPanel implements ActionListener {
     }
 
     private void drawScore(Graphics g) {
-        g.setColor(new Color(40, 40, 40));
+        g.setColor(Color.WHITE);
         g.setFont(new Font("SansSerif", Font.BOLD, 20));
         g.drawString("Score: " + score, 15, 28);
     }

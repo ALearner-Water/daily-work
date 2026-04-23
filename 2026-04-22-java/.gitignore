@@ -1,6 +1,7 @@
 out/
-*.class
 target/
+build/
+bin/
 .idea/
 .vscode/
 *.iml
