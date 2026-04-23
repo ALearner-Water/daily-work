@@ -1,0 +1,14 @@
+# Workspace and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+
+# Common build outputs
+out/
+target/
+dist/
+build/
+bin/
+
