@@ -1,3 +1,4 @@
+import JavaBean.User;
 import com.testfightinggame.ui.Log;
 
 public class App {
