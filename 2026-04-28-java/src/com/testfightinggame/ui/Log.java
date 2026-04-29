@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class Log {
     //此方法为程序登录的主页面
     public void start() {
-        //创建完uesr类就可以创建集合
+        //创建完user类就可以创建集合
         ArrayList<User> list = new ArrayList<>(); //将该集合传递到下面的登录注册去,集合就是一个数据库,存放用户信息
-
+        Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("欢迎来到测试战斗游戏~~~");
             System.out.println("╔════════════════════════════════╗");
@@ -19,7 +19,6 @@ public class Log {
             System.out.println("请选择操作：1登录 2注册 3退出"); //第二步,先写注册,注册需要输入用户名和密码,则需要用集合存放
             //集合里面的<>需要一个user类,则需要先写一个user的bean类
             //需要输入数字然后再进行判断(switch)
-            Scanner sc = new Scanner(System.in);
             String choose = sc.next();
 
             //开始匹配
