@@ -68,7 +68,7 @@ public class Log {
             System.out.println("请输入密码:");
             String password1=sc.next();
             if(!StringLong(password1,8,12)){
-                System.out.println("密码长度必须在3~8位之间,请重新输入:");
+                System.out.println("密码长度必须在8~12位之间,请重新输入:");
                 continue;
             } else if (!PassWordFormat(password1)) {  //这里判断密码格式方法需要再写一遍
                 System.out.println("密码只能是字母加数字的组合,请重新输入:");
@@ -78,6 +78,7 @@ public class Log {
             password2=sc.next();
             if (!password1.equals(password2)){
                 System.out.println("两次密码不一致,请重新输入:");
+                continue;
             }else {
                 System.out.println("注册成功啦~~");
             }
