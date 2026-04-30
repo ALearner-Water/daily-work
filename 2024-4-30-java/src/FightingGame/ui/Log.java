@@ -23,7 +23,7 @@ public class Log {
             String choose = sc.next();
             switch (choose) {
                 case "1" -> Login(list); //登录注册业务复杂,需要写方法包裹
-                case "2" -> Rigister(list); //先写注册,注册完才登录,注册需要有数据库放置用户数据,
+                case "2" -> Register(list); //先写注册,注册完才登录,注册需要有数据库放置用户数据,
                 case "3" -> {
                     System.out.println("选择退出");
                     System.exit(0);
@@ -36,10 +36,11 @@ public class Log {
         System.out.println("选择登录");
     }
 
-    public static void Rigister(ArrayList<User> list) {    //要判断就要传入集合不然下面用不了
+    public static void Register(ArrayList<User> list) {    //要判断就要传入集合不然下面用不了
         Scanner sc = new Scanner(System.in);
         String username;  //在循环外面可以后面一起存进仓库
         System.out.println("选择注册"); //注册需要用户名和密码
+
         while (true) {
             System.out.println("请输入用户名:");
             username = sc.next();
@@ -99,7 +100,6 @@ public class Log {
     public static boolean StringLong(String username, int min, int max) {
         return min <= username.length() && username.length() <= max;  //符合条件返回true
     }
-
     //判断账户格式  需要传入输入的字符串,使用计数器的方法来判断里面的格式,又因为计数器中密码也需要使用,再抽取计数器方法
     public static boolean UserNameFormat(String username) {
         int arr[] = Cnt(username);    //需要有数组来接收返回值
