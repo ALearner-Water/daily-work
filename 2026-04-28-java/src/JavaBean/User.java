@@ -19,7 +19,7 @@ public class User {
         this.account = account;
         id=createId();     //直接生成,set get方法也不需要
         //this.isLogin = isLogin;   这里面也不需要构造
-        isLogin=true;   //直接修改  get与set也不需要
+        isLogin=true;   //直接修改  需要get set方法
         this.password = password;
     }
     public String getAccount() {
@@ -35,6 +35,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public boolean isLogin() {  //布尔的get方法是is开头的
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
+    }
+
     //随机生成id
     public static String createId(){
         StringBuilder sb=new StringBuilder("idheima");
