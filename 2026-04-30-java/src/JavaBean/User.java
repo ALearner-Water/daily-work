@@ -3,10 +3,10 @@ package JavaBean;
 import java.util.Random;
 
 public class User {
-    private String id;  //id随机分配不需要构造,也不需要set get方法
+    private String id;  //id随机分配不需要构造,不需要set get方法
     private String username;    //所以最后只需写两个变量即可,
     private String password;
-    private boolean state;  //同理,不需要外部输入状态,也不需要set get方法
+    private boolean state;  //同理,不需要外部输入状态,需要set get方法
 
     public User(){
         id=CreateId();
@@ -34,6 +34,15 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
     //写方法随机创建id
     public static String CreateId(){
         Random r=new Random();

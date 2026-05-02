@@ -4,6 +4,7 @@ import JavaBean.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Log {
@@ -34,6 +35,53 @@ public class Log {
 
     public static void Login(ArrayList<User> list) { //登录也要传入集合
         System.out.println("选择登录");
+        System.out.println("请输入用户名");
+        //  1.判断是否存在账户(去集合里面找,之前已经写过)  2.判断密码  3.密码里面还有验证码
+        Scanner sc = new Scanner(System.in);
+        String username = sc.next();
+        if (!IsUnique(username, list)) {
+            System.out.println("用户名不存在,请先注册");
+            return; //直接返回选择页面
+        }
+        //这个获取用户索引之后找数据的这一句会反复使用,直接给一个变量储存他会更方便
+        int userindex =FindIndex(username, list);
+        if (!list.get(userindex).isState()) {  //判断用户是否被锁定 //用方法找到该用户名的索引进行判断,在密码匹配时也会用到
+            System.out.println("用户已被锁定,请重新注册或者联系客服");
+            return;
+        }
+        //密码判断和验证码判断(3次机会)
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("请输入密码:");
+            String password = sc.next();
+            //输完密码就要跳出验证码并进行判断
+            for (int j = 1; j <= 3; j++) {
+                String code = CreateCode();
+                System.out.println("验证码为:" + code);
+                System.out.println("请输入验证码:");
+                String usercode = sc.next();
+                if (!code.equalsIgnoreCase(usercode)) {
+                    if (j == 3) {
+                        System.out.println("验证码多次输入错误,请重新登录:");
+                        return;
+                    }
+                    System.out.println("验证码输入错误,还有" + (3 - j) + "次机会,请重新输入:");
+                    continue;
+                }
+                break;
+            }
+            //判断密码
+            if (list.get(userindex).getPassword().equals(password)) {
+                System.out.println("登录成功,欢迎回来");
+                break;
+            } else {
+                if (i == 3) {
+                    list.get(userindex).setState(false);
+                    System.out.println("用户已被锁定,请重新注册或者联系客服");
+                    return;
+                }
+                System.out.println("密码输入错误,还有" + (3 - i) + "次机会,请重新输入:");
+            }
+        }
     }
 
     public static void Register(ArrayList<User> list) {    //要判断就要传入集合不然下面用不了
@@ -100,6 +148,7 @@ public class Log {
     public static boolean StringLong(String username, int min, int max) {
         return min <= username.length() && username.length() <= max;  //符合条件返回true
     }
+
     //判断账户格式  需要传入输入的字符串,使用计数器的方法来判断里面的格式,又因为计数器中密码也需要使用,再抽取计数器方法
     public static boolean UserNameFormat(String username) {
         int arr[] = Cnt(username);    //需要有数组来接收返回值
@@ -139,5 +188,31 @@ public class Log {
     public static boolean PassWordFormat(String password) { //一样传入密码字符串
         int arr[] = Cnt(password);    //需要有数组来接收返回值
         return arr[0] > 0 && arr[1] > 0 && arr[2] == 0;    //格式之前返回true
+    }
+
+    //生成验证码
+    public static String CreateCode() {      //要使用stringbuilder拼接字符串 先生成4个字母再随机插入数字
+        Random r = new Random();
+        StringBuilder sb = new StringBuilder();
+        ArrayList<Character> list = new ArrayList<>();    //创建集合存放大小写字母然后再随机取出
+        for (int i = 0; i < 26; i++) { //存放大小写字母
+            list.add((char) ('a' + i));
+            list.add((char) ('A' + i));
+        }
+        for (int i = 0; i < 4; i++) {
+            sb.append(list.get(r.nextInt(list.size())));
+        }
+        sb.insert(r.nextInt(sb.length()+1), r.nextInt(10));    //插入应该是sb的长度,不应该是list的长度
+        return sb.toString();
+    }
+
+    //寻找密码索引
+    public static int FindIndex(String username, ArrayList<User> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getUsername().equals(username)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
