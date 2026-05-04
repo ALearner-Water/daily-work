@@ -5,7 +5,7 @@ public class EnemyCharacter extends Character {
     private String skill;
     boolean defending;
 
-    public EnemyCharacter(int attack, int defense, int hp, String name, String skill) {
+    public EnemyCharacter(int hp, int attack, int defense,  String name, String skill) {
         super(attack, defense, hp, name);
         this.skill = skill;
     }

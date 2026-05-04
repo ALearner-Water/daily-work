@@ -12,7 +12,7 @@ public class UserCharacter extends Character {
         skills = new ArrayList<String>();
     }
 
-    public UserCharacter(int attack, int defense, int hp, String name) {
+    public UserCharacter(int hp, int attack, int defense, String name) {
         super(attack, defense, hp, name);
         skills = new ArrayList<String>();
     }
@@ -21,8 +21,20 @@ public class UserCharacter extends Character {
         return skills;
     }
 
-    public void setSkills(ArrayList<String> skills) {
+    public void setSkills(ArrayList<String> list) {
         this.skills = skills;
     }
 
+    //写一个展示技能的show方法
+    public String showSkills(){
+        //使用stringbuilder进行拼接
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < getSkills().size(); i++) {
+            sb.append(getSkills().get(i));
+            if(i!=getSkills().size()-1){
+                sb.append(", ");
+            }
+        }
+        return sb.toString();
+    }
 }

@@ -1,10 +1,13 @@
 import JavaBean.User;
+import com.testfightinggame.ui.FightingGame;
 import com.testfightinggame.ui.Log;
 
 public class App {
     public static void main(String[] args){
         //程序主入口,负责启动程序
-        Log l=new Log();
-        l.start();
+        /*Log l=new Log();
+        l.start();*/
+        FightingGame fg=new FightingGame();
+        fg.GameStart("张三");
     }
 }

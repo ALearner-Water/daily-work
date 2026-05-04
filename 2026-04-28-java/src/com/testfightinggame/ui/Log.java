@@ -25,7 +25,7 @@ public class Log {
 
             //开始匹配
             switch (choose) {
-                case "1" -> login(list);    //这里的各种登陆注册代码会很复杂需要再写几个方法包裹
+                case "1" -> login(list);//这里的各种登陆注册代码会很复杂需要再写几个方法包裹
                 case "2" -> register(list);
                 case "3" -> {
                     System.out.println("用户选择了退出操作"); //直接关闭虚拟机
@@ -85,7 +85,12 @@ public class Log {
                 System.out.println("密码输入错误,还有" + (3 - i) + "次机会,请重新输入");
                 continue;
             } else {
-                System.out.println("登录成功");
+                System.out.println("登录成功,启动游戏！");
+
+                //创建figthinggame对象然后调用方法启动游戏
+                FightingGame fg = new FightingGame();
+                fg.GameStart(list.get(passwordIndex).getAccount()); //从列表中获取对象然后再获取用户名
+
                 break;
             }
         }

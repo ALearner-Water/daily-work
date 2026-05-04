@@ -86,7 +86,8 @@ public class Character {
     }   //玩家英雄直接调用,敌人要重写,因为有一个判断减伤状态的方法
 
     //  4.展示角色信息
-    public void show() {
-        System.out.println("角色名称: " + getName() + "  当前血量: " + getHp() + "  攻击力: " + getAttack() + "  防御力: " + getDefense());
+    public String show() {
+        return ("角色名称: " + getName() + "  当前血量: " + getHp() + "  攻击力: " + getAttack() + "  防御力: " + getDefense());
     }
+
 }
