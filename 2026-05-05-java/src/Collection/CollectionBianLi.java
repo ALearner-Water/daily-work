@@ -27,13 +27,14 @@ public class CollectionBianLi {
             }
             System.out.println(s);
         }   //迭代器遍历时不能用集合的方法添加或删除元素,只能用迭代器的方法删除-----it.remove() 添加没有办法
-
+        System.out.println("---------------");
 
         //  2.增强for遍历(foreach)------底层也是迭代器-------单列集合和数组词可以用-------双列不可以
         //for(数据类型 数据名: 要遍历的集合或者数组)
         for(String s:coll){     //快速生成coll.for
             System.out.println(s);
         }
+        System.out.println("---------------");
 
         //  3.Lambda表达式遍历(foreach)------底层也是迭代器-------双列集合不可以
         coll.forEach(e-> System.out.println(e));

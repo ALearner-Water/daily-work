@@ -11,17 +11,19 @@ public class User {
 
     public User() {
         //空参里面也需要修改
-        id=createId();
+        id = createId();
         //修改islogin状态
-        isLogin=true;
+        isLogin = true;
     }
+
     public User(String account, String password) {
         this.account = account;
-        id=createId();     //直接生成,set get方法也不需要
+        id = createId();     //直接生成,set get方法也不需要
         //this.isLogin = isLogin;   这里面也不需要构造
-        isLogin=true;   //直接修改  需要get set方法
+        isLogin = true;   //直接修改  需要get set方法
         this.password = password;
     }
+
     public String getAccount() {
         return account;
     }
@@ -29,9 +31,11 @@ public class User {
     public void setAccount(String account) {
         this.account = account;
     }
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -45,12 +49,12 @@ public class User {
     }
 
     //随机生成id
-    public static String createId(){
-        StringBuilder sb=new StringBuilder("idheima");
+    public static String createId() {
+        StringBuilder sb = new StringBuilder("idheima");
         //生成随机数
-        Random r=new Random();
-        for (int i=0;i<5;i++) {
-            int num=r.nextInt(10);  //0~9之间
+        Random r = new Random();
+        for (int i = 0; i < 5; i++) {
+            int num = r.nextInt(10);  //0~9之间
             sb.append(num);
         }
         return sb.toString();

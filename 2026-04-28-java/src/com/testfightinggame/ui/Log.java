@@ -222,7 +222,7 @@ public class Log {
         for (int i = 0; i < 4; i++) {
             sb.append(list.get(r.nextInt(list.size())));
         }
-        //插入数字
+        //插入数字   
         sb.insert(r.nextInt(sb.length()), r.nextInt(10));
         return sb.toString();
     }

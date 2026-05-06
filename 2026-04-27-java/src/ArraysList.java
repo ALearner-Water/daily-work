@@ -25,7 +25,7 @@ public class ArraysList {
 
         //5 set.,修改指定位置的元素
         list.set(0,"444");
-        System.out.println( list);
+        System.out.println(list);
 
         //6 get.,获取指定位置的元素
         String s = list.get(0);
