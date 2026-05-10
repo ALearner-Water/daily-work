@@ -15,7 +15,7 @@ public class Test2 {
                 System.out.println("请输入年龄:");
                 int age = sc.nextInt();     //输入错误类型会抛出InputMismatchException
                 if(age < 0 || age >40){
-                    throw new AgeOutofboundExcption("年龄必须在0-120之间");    //同理
+                    throw new AgeOutofboundExcption("年龄必须在0-40之间");    //同理
                 }
                 break;
             } catch (InputMismatchException e) {
