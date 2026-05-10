@@ -1,26 +1,35 @@
-import java.text.NumberFormat;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args){
         //键盘录入姓名年龄,要来判断异常,直到录入成功为止
         Scanner sc = new Scanner(System.in);
-        System.out.println("请输入姓名:");
         while (true) {
             try {
+                System.out.println("请输入姓名:");
                 String name = sc.next();
-                if(name.length()<=2||name.length()>10){
-                    throw new RuntimeException();
+                if(name.length() <= 2 || name.length() > 10){
+                    throw new RuntimeException("姓名长度必须在3-10个字符之间");
                 }
                 System.out.println("请输入年龄:");
-                int age=sc.nextInt();
+                int age = sc.nextInt();     //输入错误类型会抛出InputMismatchException
+                if(age < 0 || age >40){
+                    throw new Exception("年龄必须在0-120之间");
+                }
                 break;
+            } catch (InputMismatchException e) {
+                System.out.println("年龄必须是整数，请重新输入");
+                sc.next(); // 清除缓冲区中的无效输入
             } catch (RuntimeException e) {
-                System.out.println("姓名长度有误,请输入正确的姓名");
-            }catch ( Exception e){
-                System.out.println("请输入正确的年龄");
+                System.out.println("姓名错误: " + e.getMessage());      //这里getmassage获取了throw的异常
+            } catch (Exception e){
+                System.out.println("年龄错误: " + e.getMessage());
             }
         }
-    }
 
+        System.out.println("录入成功！");
+        sc.close();
+    }
 }
+
