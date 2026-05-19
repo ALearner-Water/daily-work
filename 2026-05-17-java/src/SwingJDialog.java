@@ -17,7 +17,7 @@ public class SwingJDialog {
         jd.setLocationRelativeTo(null);     //让对话框居中
         jd.setDefaultCloseOperation(1); //设置对话框关闭方式
         //在对话框中添加内容
-        JLabel label=new JLabel("游戏结束",JLabel.CENTER);    //先创建标签使其居中
+        JLabel label=new JLabel("游戏结束", JLabel.CENTER);    //先创建标签使其居中
         label.setFont(new Font("微软雅黑",Font.BOLD,20));   //设置字体大小和样式
         jd.add(label);  //添加标签
         jd.setVisible(true);    //可视化
