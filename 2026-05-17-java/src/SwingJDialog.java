@@ -5,7 +5,7 @@ public class SwingJDialog {
     public static void main(String[] args){
         //先创建窗体然后才有对话框
         JFrame game = new JFrame("游戏");
-        game.setSize(603, 602);
+        game.setSize(400, 400);
         game.setLocationRelativeTo(null);
         //设置窗体关闭方式
         game.setDefaultCloseOperation(3);

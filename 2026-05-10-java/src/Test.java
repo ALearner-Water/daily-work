@@ -15,16 +15,14 @@ public class Test {
                 System.out.println("请输入年龄:");
                 int age = sc.nextInt();     //输入错误类型会抛出InputMismatchException
                 if(age < 0 || age >40){
-                    throw new Exception("年龄必须在0-120之间");
+                    throw new RuntimeException("年龄必须在0-120之间");
                 }
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("年龄必须是整数，请重新输入");
                 sc.next(); // 清除缓冲区中的无效输入
             } catch (RuntimeException e) {
-                System.out.println("姓名错误: " + e.getMessage());      //这里getmassage获取了throw的异常
-            } catch (Exception e){
-                System.out.println("年龄错误: " + e.getMessage());
+                e.printStackTrace();    //这里getmassage获取了throw的异常
             }
         }
 
