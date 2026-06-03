@@ -8,8 +8,8 @@ public class SellTicket extends Thread{
     @Override
     public void run() {
         while (true){
-            synchronized (SellTicket.class){
-                if (ticket <= 100){
+            synchronized (SellTicket.class){    //同步代码块
+                if (ticket <= 100) {
                     System.out.println(this.getName() + "正在卖第" + ticket + "张票");
                     ticket++;
                 }
