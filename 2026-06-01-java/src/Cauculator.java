@@ -9,7 +9,7 @@ public class Cauculator extends JFrame implements ActionListener {  //实现监�
     private String LastNum = "";    //记录第二个数字
     private String Operator = "";   //记录运算符
     private boolean startNumber = true;   //是否开始输入新数字
-    private double result = 0;
+    private double result = 0;  //中间运算的变量
     private JTextField jt = new JTextField(20);
 
     public Cauculator() {
@@ -39,7 +39,7 @@ public class Cauculator extends JFrame implements ActionListener {  //实现监�
         String buttonName[] = {"7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+"};
         for (int i = 0; i < 16; i++) {
             JButton jb = new JButton(buttonName[i]);
-            jb.setFont(new Font("Arial", Font.PLAIN, 20));
+            jb.setFont(new Font("粗体", Font.BOLD, 20));
             jb.addActionListener(this); //添加监听器
             panel1.add(jb);
         }
@@ -63,7 +63,7 @@ public class Cauculator extends JFrame implements ActionListener {  //实现监�
             }
             //将运算符和数字都显示在文本框内
             if (!Operator.isEmpty()) {
-                jt.setText(LastNum + Operator + FirstNum);
+                jt.setText(jt.getText() + buttonName);
             } else {
                 jt.setText(FirstNum);
             }
@@ -76,17 +76,23 @@ public class Cauculator extends JFrame implements ActionListener {  //实现监�
                 LastNum = FirstNum;
             }
             Operator = buttonName;
-            jt.setText(LastNum + Operator);
+            jt.setText(jt.getText() + Operator);
             startNumber = true;   //开始输入新数字
         } else if (buttonName.equals("=")) {
             double cauculate = Cauculate();
-            jt.setText(String.valueOf(cauculate));
-            Operator = "";
-            LastNum = "";
-            startNumber = true;
+            // 只有在不是NaN的情况下才显示结果
+            if (!Double.isNaN(cauculate)) {
+                jt.setText(String.valueOf(cauculate));
+                Operator = "";
+                LastNum = "";
+                FirstNum = String.valueOf(cauculate);
+                startNumber = true;
+            }
+            // 如果是NaN（除零错误），保持错误信息显示，不执行清空操作
         }
     }
 
+    //计算过程
     public double Cauculate() {
         double defult = 0;
         Double num1 = Double.parseDouble(LastNum);
@@ -98,7 +104,8 @@ public class Cauculator extends JFrame implements ActionListener {  //实现监�
             case "/" -> {
                 if (num2 == 0) {
                     jt.setText("除数不能为0");
-                    return 0;
+                    // 重置状态
+                    return Double.NaN;  // 返回NaN表示错误
                 }
                 defult = num1 / num2;
             }
