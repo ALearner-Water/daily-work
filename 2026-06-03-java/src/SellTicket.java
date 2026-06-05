@@ -12,7 +12,7 @@ public class SellTicket extends Thread{
                 if (ticket <= 100) {
                     System.out.println(this.getName() + "正在卖第" + ticket + "张票");
                     ticket++;
-                }
+                }else break;    //需要添加break，否则线程会一直执行下去，无法结束
             }
             try {
                 Thread.sleep(10);
