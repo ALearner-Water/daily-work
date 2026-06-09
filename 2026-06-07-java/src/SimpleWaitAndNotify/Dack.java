@@ -1,3 +1,5 @@
+package SimpleWaitAndNotify;
+
 public class Dack {
     //线程的等待唤醒机制
     /*
