@@ -7,9 +7,8 @@ public class test {
         ExecutorService pool = Executors.newCachedThreadPool();
         //提交任务运行
         pool.submit(new LinePool());
-        pool.submit(new LinePool());
-
-        pool.submit(new LinePool());
+        pool.submit(new LinePool());        //如果没有等待时间，则有可能会开启新线程来执行新任务
+        pool.submit(new LinePool());        //如果有等待时间，则在等待时间后上一个任务已经做完，则会复用线程
 
 
         //任务结束之后要关闭线程池
