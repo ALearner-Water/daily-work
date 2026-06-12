@@ -15,6 +15,7 @@ public class Demo3 {
         //还要决定能装多大
         byte[] bytes = new byte[1024];
         DatagramPacket dp = new DatagramPacket(bytes, bytes.length);    //把数组的全部长度都用来装数据
+        //receive是阻塞的,会等待发送端发生数据
         ds.receive(dp);
 
         //4.解析数据
