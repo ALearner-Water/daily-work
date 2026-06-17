@@ -3,6 +3,7 @@ package Exercise.work3;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.UUID;
 
 public class Serverdemo3 {
     public static void main(String[] args) throws IOException {
@@ -11,7 +12,10 @@ public class Serverdemo3 {
         Socket accept = so.accept();    //接收数据
         //读入数据然后再存入新文件夹,也是用缓冲流包裹
         BufferedInputStream bis=new BufferedInputStream(accept.getInputStream());
-        BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream("D:\\53507\\daily-work\\2026-06-14-java\\picture\\a.jpg"));
+        //解决文件会重名导致覆盖的问题
+        String replace = UUID.randomUUID().toString().replace("-", "");
+        //创建输出流
+        BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream("D:\\53507\\daily-work\\2026-06-14-java\\picture\\"+replace+".jpg"));
         byte [] b=new byte[1024];
         int len;
         while ((len=bis.read(b))!=-1){

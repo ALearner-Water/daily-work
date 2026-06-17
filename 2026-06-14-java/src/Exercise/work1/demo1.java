@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class demo1 {
     //实现多发多收
     public static void main(String[] args) throws IOException {
-        Socket so = new Socket("hyh", 10020);
+        Socket so = new Socket("127.0.0.1", 10020);
 
         //写数据
         OutputStream op = so.getOutputStream();
