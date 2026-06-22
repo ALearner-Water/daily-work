@@ -1,10 +1,10 @@
 package Exercise.work1;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Serverdemo1 {
     public static void main(String[] args) throws IOException {
