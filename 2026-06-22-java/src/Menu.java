@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ArrayList<Student> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         while (true) {
@@ -18,22 +18,28 @@ public class Menu {
             switch (choose) {      //实现增删改查统计等功能
                 case 1:
                     System.out.println("用户选择录入学生信息");
-                    new Fuction(list).log();
+                    new Function(list).log();
+                    Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 2:
                     System.out.println("用户选择删除学生信息");
-                    new Fuction(list).delete();
+                    new Function(list).delete();
+                    Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 3:
                     System.out.println("用户选择修改学生信息");
+                    new Function(list).update();
+                    Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 4:
                     System.out.println("用户选择查询学生信息");   //查询类型有很多可以抽象成方法
                     SearchInformation(list);
+                    Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 5:
                     System.out.println("用户选择统计学生信息");   //统计类型有很多可以抽象成方法
                     Culculate(list);
+                    Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 6:
                     System.out.println("用户选择退出系统");
@@ -42,7 +48,7 @@ public class Menu {
         }
     }
 
-    public static void SearchInformation(ArrayList<Student> list) {
+    public static void SearchInformation(ArrayList<Student> list) throws InterruptedException {
 /*     （a)查询所有学生信息；
        （b)按学号查询单个学生信息；
         (c)按姓名查询单个学生信息；
@@ -72,7 +78,7 @@ public class Menu {
                 System.out.println("用户按班号查询学生信息");
                 break;
         }
-        new Fuction(list).search(choose);   //直接按选择的方式进行查询
+        new Function(list).search(choose);   //直接按选择的方式进行查询
     }
 
     public static void Culculate(ArrayList<Student> list) {
@@ -102,7 +108,7 @@ public class Menu {
                 System.out.println("用户选择按系别统计学生人数");
                 break;
         }
-        new Fuction(list).count(choose);
+        new Function(list).count(choose);
     }
 
 
