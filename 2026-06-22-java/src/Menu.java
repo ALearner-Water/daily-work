@@ -4,7 +4,10 @@ import java.util.Scanner;
 
 public class Menu {
     public static void main(String[] args) throws InterruptedException {
-        ArrayList<Student> list = new ArrayList<>();
+        ArrayList<Student> list = new ArrayList<>();        //使用集合来存储用户信息
+        // 程序启动时加载历史数据
+        Function func = new Function(list);
+        func.LoadFromfile();
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("请选择需要执行的操作: \n" + "(1)学生基本信息的录入。\n" +
@@ -18,37 +21,39 @@ public class Menu {
             switch (choose) {      //实现增删改查统计等功能
                 case 1:
                     System.out.println("用户选择录入学生信息");
-                    new Function(list).log();
+                    func.log();
+                    //录入完毕之后将集合按照学号进行排序
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 2:
                     System.out.println("用户选择删除学生信息");
-                    new Function(list).delete();
+                    func.delete();
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 3:
                     System.out.println("用户选择修改学生信息");
-                    new Function(list).update();
+                    func.update();
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 4:
                     System.out.println("用户选择查询学生信息");   //查询类型有很多可以抽象成方法
-                    SearchInformation(list);
+                    SearchInformation(func);
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 5:
                     System.out.println("用户选择统计学生信息");   //统计类型有很多可以抽象成方法
-                    Culculate(list);
+                    Culculate(func);
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
                 case 6:
                     System.out.println("用户选择退出系统");
+                    func.SaveTofile();  //保存数据
                     System.exit(0);
             }
         }
     }
 
-    public static void SearchInformation(ArrayList<Student> list) throws InterruptedException {
+    public static void SearchInformation(Function  func) throws InterruptedException {
 /*     （a)查询所有学生信息；
        （b)按学号查询单个学生信息；
         (c)按姓名查询单个学生信息；
@@ -78,10 +83,10 @@ public class Menu {
                 System.out.println("用户按班号查询学生信息");
                 break;
         }
-        new Function(list).search(choose);   //直接按选择的方式进行查询
+        func.search(choose);   //直接按选择的方式进行查询
     }
 
-    public static void Culculate(ArrayList<Student> list) {
+    public static void Culculate(Function func) {
 /*
         (a)按性别统计学生人数；
         (b)按班号统计学生人数；
@@ -108,7 +113,7 @@ public class Menu {
                 System.out.println("用户选择按系别统计学生人数");
                 break;
         }
-        new Function(list).count(choose);
+        func.count(choose);   //调用统计方法
     }
 
 
