@@ -162,16 +162,9 @@ public class Function {
     public void search(String choose) throws InterruptedException {
         boolean found = false;        //判断是否找到相关信息
         String str;
-        System.out.println("请选择查询后的输出排序方式:\n" +
-                "1. 按学号升序打印\n" +
-                "2. 按学号降序打印\n" +
-                "3. 按年龄升序打印\n" +
-                "4. 按年龄降序打印\n" +
-                "(其他按键) 按默认排序\n");
-        String ChooseSort = sc.next();
-        Sort(ChooseSort);     //调用方法进行排序
         switch (choose) {
             case "a" -> {       //遍历打印所有学生信息
+                decideSort();   //抽象各种排序方式
                 if (list.size() == 0) {
                     System.out.println("没有学生信息");
                     prompt();       //给用户提供选择
@@ -189,7 +182,6 @@ public class Function {
                         System.out.println("查询到的学生有:");
                         print(list.get(i));
                         found = true;
-                        break;
                     }
                 }
                 if (!found) {
@@ -200,6 +192,7 @@ public class Function {
             case "c" -> {       //提供姓名查询学生信息
                 System.out.println("请输入要查询学生的姓名:");
                 str = sc.next();
+                decideSort();   //抽象各种排序方式
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i).getName().contains(str)) {
                         System.out.println("查询到的学生有:");
@@ -214,6 +207,7 @@ public class Function {
             }
             case "d" -> {       //提供性别查询学生信息
                 str = search_sex();     //抽象成方法判断性别
+                decideSort();   //抽象各种排序方式
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i).getSex().equals(str)) {
                         print(list.get(i));
@@ -228,6 +222,7 @@ public class Function {
             case "e" -> {       //提供班级查询学生信息
                 System.out.println("请输入要查询学生的班级:");
                 str = sc.next();
+                decideSort();   //抽象各种排序方式
                 for (int i = 0; i < list.size(); i++) {
                     if (list.get(i).getClassNumber().contains(str)) {
                         print(list.get(i));
@@ -239,11 +234,15 @@ public class Function {
                     prompt();       //给用户提供选择
                 }
             }
+            default -> {
+                System.out.println("输入错误");
+                prompt();
+            }
         }
     }
 
     //实现统计功能
-    public void count(String choose) {
+    public void count(String choose) throws InterruptedException {
         int count_sex = 0;    //按性别统计的人数
         int count_class = 0;  //按班号统计的人数
         int count_age = 0;    //按年龄统计的人数
@@ -289,6 +288,10 @@ public class Function {
                 }
                 System.out.println("系别为" + str + "的学生的数量为:" + count_department);
             }
+            default -> {
+                System.out.println("输入错误");
+                prompt();
+            }
         }
     }
     //从这里开始的方法是从上面抽取出来的
@@ -325,7 +328,6 @@ public class Function {
         }
         return strSex;
     }
-
     //提取打印学生信息的方法
     public void print(Student student) {
         System.out.println("学号: " + student.getID() + "\t" + "  姓名: " + student.getName() + "\t" + "  性别: " + student.getSex() + "\t" +
@@ -355,6 +357,18 @@ public class Function {
             }
         }
         return found;   //返回一个布尔值用来后续判断
+    }
+
+    //将决定排序抽取成方法
+    public void decideSort() {
+        System.out.println("请选择查询后的输出排序方式:\n" +
+                "1. 按学号升序打印\n" +
+                "2. 按学号降序打印\n" +
+                "3. 按年龄升序打印\n" +
+                "4. 按年龄降序打印\n" +
+                "(其他按键) 按默认排序\n");
+        String ChooseSort = sc.next();
+        Sort(ChooseSort);     //调用方法进行排序
     }
 
     //保存数据到文件

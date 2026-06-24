@@ -15,37 +15,37 @@ public class Menu {
                     "(3)学生基本信息的修改。\n" +
                     "(4)学生基本信息的查询。\n" +
                     "(5)学生基本信息的统计。\n"
-                    +"(6)退出系统。\n");
+                    +"(其他)退出系统。");
             //使用switch匹配各功能项
-            int choose = sc.nextInt();
+            String choose = sc.next();
             switch (choose) {      //实现增删改查统计等功能
-                case 1:
+                case "1":
                     System.out.println("用户选择录入学生信息");
                     func.log();
                     //录入完毕之后将集合按照学号进行排序
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
-                case 2:
+                case "2":
                     System.out.println("用户选择删除学生信息");
                     func.delete();
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
-                case 3:
+                case "3":
                     System.out.println("用户选择修改学生信息");
                     func.update();
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
-                case 4:
+                case "4":
                     System.out.println("用户选择查询学生信息");   //查询类型有很多可以抽象成方法
                     SearchInformation(func);
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
-                case 5:
+                case "5":
                     System.out.println("用户选择统计学生信息");   //统计类型有很多可以抽象成方法
                     Culculate(func);
                     Thread.sleep(1000);     //休眠1s，让控制台跳转更加友好
                     break;
-                case 6:
+                default:
                     System.out.println("用户选择退出系统");
                     func.SaveTofile();  //保存数据
                     System.exit(0);
@@ -86,7 +86,7 @@ public class Menu {
         func.search(choose);   //直接按选择的方式进行查询
     }
 
-    public static void Culculate(Function func) {
+    public static void Culculate(Function func) throws InterruptedException {
 /*
         (a)按性别统计学生人数；
         (b)按班号统计学生人数；
