@@ -379,7 +379,7 @@ public class Function {
             writer.write(String.valueOf(list.size()));
             writer.newLine();   //方便读取数据
             // 写入每个学生的信息
-            for (Student stu : list) {  //使用迭代器遍历集合
+            for (Student stu : list) {
                 writer.write(stu.getID());      //写入学号
                 writer.newLine();     //读完一种数据换一行,方便后续读取数据时不会出错
                 writer.write(stu.getName());   //写入姓名
